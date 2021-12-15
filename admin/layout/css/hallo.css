@@ -1,0 +1,24 @@
+body .login .form-control {
+    background-color: #EAEAEA;
+}
+
+.login {
+    width: 500px;
+    margin: 100px auto;
+}
+
+.login input {
+    margin: 15px;
+}
+
+.login.btn {
+    background-color: #008dde;
+}
+
+.class {
+    color: blue
+}
+
+#edit_btn {
+    text-align: center;
+}
