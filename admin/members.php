@@ -16,15 +16,12 @@ if (isset($_SESSION['Username']))
     
     {
 
-      $stmt = $con->prepare("SELECT * FROM  shop.users 
+    $stmt = $con->prepare("SELECT * FROM  shop.users 
 								WHERE GroupID != 1");
 
 		$stmt->execute();
 		$rows = $stmt->fetchAll();
-
-
       ?>
- 
     <h1 class="text-center my-5"> Mange members</h1>
      <div class="container">
      <table class="table table-dark table-striped table-hover table-bordered border-primary">
@@ -42,7 +39,7 @@ if (isset($_SESSION['Username']))
   <tbody>
 
   <?php
-                $counter=0;      
+                     $counter=0;      
                     foreach( $rows as $row )
                     {
                       $counter++;

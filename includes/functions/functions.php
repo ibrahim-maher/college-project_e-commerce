@@ -49,33 +49,37 @@
 
 	}
 
+
+	
 	/*
-	** Check Items Function 
+	** Get All items Function 
+
 	*/
 
-	function checkItem($select, $from, $value) {
+	function getAllFrom($field, $table,$stat) {
 
 		global $con;
 
-		$statement = $con->prepare("SELECT $select FROM shop.$from WHERE $select = ?");
+		$getAll = $con->prepare("SELECT $field FROM shop.$table WHERE stat = ?");
 
-		$statement->execute(array($value));
+		$getAll->execute(array($stat));
 
-		$count = $statement->rowCount();
+		$all = $getAll->fetchAll();
 
-		return $count;
-
+		return $all;
+	
 	}
+
 	/*
-	** Get All Function 
+	** Get All items between Function 
 
 	*/
 
-	function getAllFrom($field, $table, $ordering = "DESC") {
+	function itemsbetween ($field, $table,$nth,$category ) {
 
 		global $con;
 
-		$getAll = $con->prepare("SELECT $field FROM shop.$table ORDER BY  $ordering");
+		$getAll = $con->prepare("SELECT $field FROM shop.$table WHERE it_id AND it_cat_id='$category' LIMIT $nth,4 ");
 
 		$getAll->execute();
 
@@ -83,4 +87,128 @@
 
 		return $all;
 	
+	}
+
+	/*
+	** create table Function 
+
+	*/
+
+	function createtable ($name)
+	{	
+		
+		$dsn='"mysql:host=localhost;dbname=shop"';
+		$user='root';
+		$pass='';
+		
+		$option=array(PDO::MYSQL_ATTR_INIT_COMMAND =>  "SET NAMES 'UTF8'");
+		try
+		{
+			$conn=new PDO("mysql:host=localhost;dbname=shop",$user,$pass,$option);
+			$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			
+		
+		}
+		catch (PDOExption $e)
+		{
+			echo 'failed to connect '.$e->getMassege();
+		}
+
+	
+		// SQL statement for creating new tables
+		$statements =  "CREATE TABLE IF NOT EXISTS $name (
+        item_id   INT NOT NULL, 
+        user_id INT NOT NULL ,
+		stat INT  DEFAULT '0' )";
+
+
+	
+	$conn->exec($statements);
+
+
+
+
+	}
+
+
+/*
+	** insert to table  table Function 
+
+	*/
+
+	function inserttotable ($name,$item_id,$user_id)
+	{	
+		global $con;
+
+		$stmt = $con->prepare("SELECT 
+		item_id 
+	FROM 
+		shop.$name 
+	WHERE 
+		item_id = ? ");
+
+$stmt->execute(array($item_id));
+$row = $stmt->fetch();
+$count = $stmt->rowCount();
+
+
+if($count==0)
+	{
+		$stmt = $con->prepare(" INSERT INTO shop.$name(item_id,user_id )
+		VALUE (?,?) ");
+		
+		$stmt->execute(array($item_id,$user_id));
+		$row=$stmt->fetch();
+		$count=$stmt->rowCount();
+		
+
+	}
+   
+		
+	
+	
+}
+
+
+/*
+	** get items to cart Function 
+
+	*/
+function getitemstocart( $item_id,) {
+
+	global $con;
+
+	$getAll = $con->prepare("SELECT * FROM shop.items WHERE it_id = ?  ");
+
+	$getAll->execute(array($item_id));
+
+	$all = $getAll->fetchAll();
+
+	return $all;
+
+}
+
+
+/*
+	** delete items to cart Function 
+
+	*/
+	function deletetitemstocart( $item_id,$name) {
+
+	global $con;
+	$stmt = $con->prepare("DELETE  FROM shop.$name WHERE item_id = ? ");
+	$stmt->execute(array($item_id));
+
+
+	
+
+}
+	
+	function updateitemtobuy($name,$item_id)
+	{
+		global $con;
+		 $_SESSION['user'];  
+		$stmt = $con->prepare(" UPDATE shop.$name SET stat= 1  WHERE item_id = ? ");
+		$stmt->execute(array($item_id)); 
+
 	}

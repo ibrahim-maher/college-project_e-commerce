@@ -2,7 +2,7 @@
 
 /*   categories page  */
 session_start();
-$pageTitle=' categories';
+$pageTitle=' items';
 
 if (isset($_SESSION['Username'])) 
 
@@ -102,18 +102,18 @@ if (isset($_SESSION['Username']))
                   </div>
   
                   <div class="col-md-6 my-2">
-                    <label for="inputcatname" class="form-label">item price</label>
+                    <label id="price" for="inputcatname" class="form-label">item price</label>
                     <input type="text" class="form-control"  name="inputitemprice" required>
                   </div>
 
                   <div class="col-md-6 my-2">
-                    <label for="inputcatname" class="form-label">item discount</label>
-                    <input type="text" class="form-control"  name="inputitemdis" required>
+                    <label id="dis" for="inputcatname" class="form-label">item discount</label>
+                    <input type="text" class="form-control"  name="inputitemdis" >
                   </div>
   
                   <div class="col-md-6 my-2">
-                    <label for="inputcatname" class="form-label"> price after discount</label>
-                    <input type="text" class="form-control"  name="inputitempreice2" required>
+                    <label id="after_price" for="inputcatname" class="form-label"> price after discount</label>
+                    <input type="text" class="form-control"  name="inputitempreice2"  >
                   </div>
 
 
@@ -141,7 +141,7 @@ if (isset($_SESSION['Username']))
 
                   <div class="col-md-12 my-2">
                     <label for="inputcatname" class="form-label">item rate </label>
-                    <input type="text" class="form-control"  name="inputitemrate" required>
+                    <input type="text" class="form-control"  name="inputitemrate" >
                   </div>
 
                   <div class="col-6  my-2">
@@ -366,8 +366,8 @@ if (isset($_SESSION['Username']))
 		
                     echo '<div class="container text-center ">
                                 <h1 class="text-center my-5"> category has been deleted successfully </h1>
-                                <a href="categories.php?do=Manage" class="btn btn-primary my">
-                                         categories members
+                                <a href="item.php?do=Manage" class="btn btn-primary my">
+                                         manage members
                                 </a>
                             </div>'
                 ;

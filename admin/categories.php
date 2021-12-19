@@ -17,8 +17,8 @@ if (isset($_SESSION['Username']))
     {
 
        $stmt = $con->prepare("SELECT * FROM  shop.categories ");
-		$stmt->execute();
-		$rows = $stmt->fetchAll();
+		  $stmt->execute();
+		  $rows = $stmt->fetchAll();
 
 
       ?>
@@ -274,7 +274,7 @@ if (isset($_SESSION['Username']))
                     echo '<div class="container text-center ">
                                 <h1 class="text-center my-5"> category has been deleted successfully </h1>
                                 <a href="categories.php?do=Manage" class="btn btn-primary my">
-                                         categories members
+                                         manage categories
                                 </a>
                             </div>'
                 ;

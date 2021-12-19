@@ -1,7 +1,12 @@
-<?php
+<?php	
+
+ob_start();
+session_start();
+	
 $pageTitle = 'shop';
 include 'init.php';
 include $tpl  .'hero.php'; 
+
 ?>
 
 <!--  section 1   -->
@@ -33,386 +38,445 @@ include $tpl  .'hero.php';
 </div>
 
 
+
+
+
+
 <!--  section 2   -->
 
+<h2 class="text-center m-5">Woman collection </h2>
 
-<div class="container">
-	<div class="row">
-		<?php
-			$allItems = getAllFrom('*', 'items','it_id');
-			foreach ($allItems as $item) {
-				echo '<div class="col-sm-6 col-md-3">';
-					echo '<div class="thumbnail item-box">';
-						echo '<span class="price-tag">$' . $item['it_price'] . '</span>';
-						echo '<img class="img-responsive" src="admin/uploads/images/'.$item['it_img'].'" alt="" />';
-						echo '<div class="caption">';
-							echo '<h3>'. $item['it_name'] .'</h3>';
-							echo '<p>' . $item['it_desc'] . '</p>';
-							echo '<div class="date"> date </div>';
-						echo '</div>';
-					echo '</div>';
-				echo '</div>';
-			}
-		?>
-	</div>
-</div>
-
- </div>        </div>
-<!--  end 2   -->
-<div class="container">
-    <div class="row">
-		<div class="col-md-12">
-                <div id="Carousel" class="carousel slide">
-                 
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                 
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item active">
-                	<div class="row">
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                	<div class="row">
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->
-                 
-                <div class="item">
-                	<div class="row">
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                		<div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->
-                 
-                </div><!--.carousel-inner-->
-                  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-                  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-                </div><!--.Carousel-->
-                 
-		</div>
-	</div>
-</div><!--.container-->
+<div id="productSlider" class="carousel slide carousel-fade mt-2" data-ride="carousel">
+<div class="carousel-inner">
 
 
-
-
-
-
-<div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <h3>Products Slider</h3>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6 hidden-xs">
-                <div class="controls pull-right">
-                    <a class="left fa fa-chevron-left btn btn-info " href="#product-slider-bootstrap" data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-info" href="#product-slider-bootstrap" data-slide="next"></a>
-                </div>
-            </div>
-        </div>
-        <div id="product-slider-bootstrap" class="carousel slide hidden-xs" data-ride="carousel" data-type="multi">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>iPad Pro</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>iPhone X, 8 Plus</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>iPad Air</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>iPad Mini 2</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>verizon prepaid phones</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>Laptop</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>Iphone 6</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       <div class="col-md-3 col-sm-3 col-xs-12">
-                            <div class="slider-item">
-                                <div class="slider-image">
-                                    <img src="https://www.pakainfo.com/300x250/#3d3d3d/1f1b1f.png" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="slider-main-detail">
-                                    <div class="slider-detail">
-                                        <div class="product-detail">
-                                            <h5>Computer</h5>
-                                            <h5 class="detail-price">$692.41</h5>
-                                        </div>
-                                    </div>
-                                    <div class="cart-section">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12 col-xs-6 review">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-6">
-                                                <a href="#" class="AddCart btn btn-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
-  <div class="carousel-inner w-100" role="listbox">
     <div class="carousel-item active">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="layout/images/Project/Mask Group (3)-min.jpg">
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next bg-dark w-auto" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                $nth=0;
+
+                $allItems = itemsbetween('*', 'items',$nth,15);
+                  
+                    foreach ($allItems as $item) 
+                    {
+                            $nth++;
+                            ?>
+                            <div class="col-3   ">
+                                <div class="card pl-4 pr-4" style="width: 18rem;">
+                                <img class="card-img-top tx_over_item " src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="row"> 
+                                            <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                        <?php if(! empty($item['it_dis']))
+                                            {
+                                                echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                            }
+                                            ?>
+                                        
+                                        </div>
+                                        <p class="card-text" style=" 
+                                        width: 200px;
+                                    
+                                        text-overflow: ellipsis;
+        
+                                    
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        
+                                        
+                                        "><?php echo $item['it_desc'] ;?> </p>
+                                        <div class="row"> 
+                                            <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                            <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                        </div>                   
+                                        <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+                                    </div>                                                                      
+                                </div>
+                            </div>
+                            <?php                                  
+                    }              
+    ?>                                                     
+        </div>
 </div>
+
+</div>
+
+<div class="carousel-item ">
+    <div class="container">
+        <div class="row ">
+
+            <?php
+           
+            $allItems = itemsbetween('*', 'items',$nth,15);
+            
+                foreach ($allItems as $item) 
+                {
+                        
+                        ?>
+                        <div class="col-3   ">
+                            <div class="card pl-4 pr-4" style="width: 18rem;">
+                            <img class="card-img-top tx_over_item "  src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="row"> 
+                                        <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                    <?php if(! empty($item['it_dis']))
+                                        {
+                                            echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                        }
+                                        ?>
+                                    
+                                    </div>
+                                    <p class="card-text" style=" 
+                                    width: 200px;
+                                
+                                    text-overflow: ellipsis;
+
+                                
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    
+                                    
+                                    "><?php echo $item['it_desc'] ;?> </p>
+                                    <div class="row"> 
+                                        <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                        <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                    </div>
+                                   <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+
+                                   
+                                </div>
+                            
+                                    
+                            </div>
+                        </div>
+                <?php               
+                }
+            ?>
+           
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+<div class="mt-5 ">
+                    <a class="fa fa-chevron-left btn btn-info m-5" style ="height:150pxr" href="#productSlider" data-slide="prev"></a>
+                    <a class="fa fa-chevron-right btn btn-info m-5 " href="#productSlider" data-slide="next"></a>
+                
+            </div>
+</a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<!--  section 3   -->
+
+<h2 class="text-center m-5"> child collection </h2>
+
+<div id="productSlider2" class="carousel slide carousel-fade mt-2" data-ride="carousel">
+<div class="carousel-inner">
+
+
+    <div class="carousel-item active">
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                $nth=0;
+
+                $allItems = itemsbetween('*', 'items',$nth,16);
+                  
+                    foreach ($allItems as $item) 
+                    {
+                            $nth++;
+                            ?>
+                            <div class="col-3   ">
+                                <div class="card pl-4 pr-4" style="width: 18rem;">
+                                <img class="card-img-top tx_over_item " src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="row"> 
+                                            <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                        <?php if(! empty($item['it_dis']))
+                                            {
+                                                echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                            }
+                                            ?>
+                                        
+                                        </div>
+                                        <p class="card-text" style=" 
+                                        width: 200px;
+                                    
+                                        text-overflow: ellipsis;
+        
+                                    
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        
+                                        
+                                        "><?php echo $item['it_desc'] ;?> </p>
+                                        <div class="row"> 
+                                            <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                            <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                        </div>                   
+                                        <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+                                    </div>                                                                      
+                                </div>
+                            </div>
+                            <?php                                  
+                    }              
+    ?>                                                     
+        </div>
+</div>
+
+</div>
+
+<div class="carousel-item ">
+    <div class="container">
+        <div class="row ">
+
+            <?php
+           
+            $allItems = itemsbetween('*', 'items',$nth,16);
+            
+                foreach ($allItems as $item) 
+                {
+                        
+                        ?>
+                        <div class="col-3   ">
+                            <div class="card pl-4 pr-4" style="width: 18rem;">
+                            <img class="card-img-top tx_over_item "  src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="row"> 
+                                        <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                    <?php if(! empty($item['it_dis']))
+                                        {
+                                            echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                        }
+                                        ?>
+                                    
+                                    </div>
+                                    <p class="card-text" style=" 
+                                    width: 200px;
+                                
+                                    text-overflow: ellipsis;
+
+                                
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    
+                                    
+                                    "><?php echo $item['it_desc'] ;?> </p>
+                                    <div class="row"> 
+                                        <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                        <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                    </div>
+                                   <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+
+                                   
+                                </div>
+                            
+                                    
+                            </div>
+                        </div>
+                <?php               
+                }
+            ?>
+           
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+<div class="mt-5 ">
+                    <a class="fa fa-chevron-left btn btn-info m-5" style ="height:150pxr" href="#productSlider2" data-slide="prev"></a>
+                    <a class="fa fa-chevron-right btn btn-info m-5 " href="#productSlider2" data-slide="next"></a>
+                
+            </div>
+</a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  section 2   -->
+
+<h2 class="text-center m-5">Woman collection </h2>
+
+<div id="productSlider1" class="carousel slide carousel-fade mt-2" data-ride="carousel">
+<div class="carousel-inner">
+
+
+    <div class="carousel-item active">
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                $nth=0;
+
+                $allItems = itemsbetween('*', 'items',$nth,15);
+                  
+                    foreach ($allItems as $item) 
+                    {
+                            $nth++;
+                            ?>
+                            <div class="col-3   ">
+                                <div class="card pl-4 pr-4" style="width: 18rem;">
+                                <img class="card-img-top tx_over_item " src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="row"> 
+                                            <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                        <?php if(! empty($item['it_dis']))
+                                            {
+                                                echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                            }
+                                            ?>
+                                        
+                                        </div>
+                                        <p class="card-text" style=" 
+                                        width: 200px;
+                                    
+                                        text-overflow: ellipsis;
+        
+                                    
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        
+                                        
+                                        "><?php echo $item['it_desc'] ;?> </p>
+                                        <div class="row"> 
+                                            <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                            <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                        </div>                   
+                                        <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+                                    </div>                                                                      
+                                </div>
+                            </div>
+                            <?php                                  
+                    }              
+    ?>                                                     
+        </div>
+</div>
+
+</div>
+
+<div class="carousel-item ">
+    <div class="container">
+        <div class="row ">
+
+            <?php
+           
+            $allItems = itemsbetween('*', 'items',$nth,15);
+            
+                foreach ($allItems as $item) 
+                {
+                        
+                        ?>
+                        <div class="col-3   ">
+                            <div class="card pl-4 pr-4" style="width: 18rem;">
+                            <img class="card-img-top tx_over_item "  src=<?php echo '  "admin/uploads/images/'.$item['it_img'].' " ';?> alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="row"> 
+                                        <h5 class="col-8 card-title"> <?php echo $item['it_name'] ;?> </h5>
+                                    <?php if(! empty($item['it_dis']))
+                                        {
+                                            echo "  <p class='col-4  items_dis '>".$item['it_dis']."%</p> ";
+                                        }
+                                        ?>
+                                    
+                                    </div>
+                                    <p class="card-text" style=" 
+                                    width: 200px;
+                                
+                                    text-overflow: ellipsis;
+
+                                
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    
+                                    
+                                    "><?php echo $item['it_desc'] ;?> </p>
+                                    <div class="row"> 
+                                        <p class="col-4 card-text price"><?php echo $item['it_price'] ;?>$</p>
+                                        <p class="col-4 card-text price_after"><?php echo $item['it_dis_price'] ;?>$</p>
+                                    </div>
+                                   <?php echo " <a href='addtocart.php?itemid=" . $item['it_id'] . "' class='btn btn-primary'> buy now</a>";?>
+
+                                   
+                                </div>
+                            
+                                    
+                            </div>
+                        </div>
+                <?php               
+                }
+            ?>
+           
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+<div class="mt-5 ">
+                    <a class="fa fa-chevron-left btn btn-info m-5" style ="height:150pxr" href="#productSlider1" data-slide="prev"></a>
+                    <a class="fa fa-chevron-right btn btn-info m-5 " href="#productSlider1" data-slide="next"></a>
+                
+            </div>
+</a>
+</div>
+</div>
+</div>
+
+<!-- *****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+
+end   The following code is for testing only
+
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+*****************************
+************************************-->
+
+<form action=""></form>
+
+
+
+
+
+
+
+
+
 <?php
 include $tpl .'footer.php';
 

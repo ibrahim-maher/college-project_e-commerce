@@ -1,5 +1,5 @@
 <?php
-
+ /* get  titel   */
  function getTitle()
  {
 
@@ -25,3 +25,33 @@
 
 }
 
+
+
+/* Count price after discount in  Items  */
+
+function price_after ($price,$discount) {
+
+   $price_after;
+   $price_after=$price-(($discount/$price)/100);
+  return $price_after;
+
+}
+
+/*
+	** Get All items Function 
+
+	*/
+
+	function getAllFrom($field, $table,$stat) {
+
+		global $con;
+
+		$getAll = $con->prepare("SELECT $field FROM shop.$table WHERE stat = ?");
+
+		$getAll->execute(array($stat));
+
+		$all = $getAll->fetchAll();
+
+		return $all;
+	
+	}

@@ -1,1 +1,3 @@
-alter(haaaaaaaaa)
+$(document).ready(function() {
+
+})

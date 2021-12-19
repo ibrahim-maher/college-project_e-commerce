@@ -50,8 +50,6 @@ if (isset($_SESSION['Username'])) {
 </div>
 
 
-
-    
     <?php
 
     include  $tpl.'footer.php';

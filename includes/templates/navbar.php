@@ -27,15 +27,39 @@
                   <a class="nav-link" href="items.php">Products</a>
                 </li>
        
-                <li class="nav-item">
-                  <a class="nav-link" href="members.php">Log in</a>
+
+                <?php
+
+
+ 
+                if (! isset($_SESSION['user'])) {
+                  ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.php">Log in</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link sign rounded-pill" href="register.php">Sign Up</a>
+                  </li>
+                      
+                    <?php
+                }
+
+                if ( isset($_SESSION['user'])) {
+                  ?>
+                  <li class="nav-item">
+                  <a class="nav-link" href="lougout2.php">log out</a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link sign rounded-pill" href="members.php">Sign Up</a>
+                  <a class="nav-link" href="cart.php">my cart </a>
                 </li>
+                <?php
+                }
+                      ?>
+               
 
-                
+               
        
           </ul>
           </div>
